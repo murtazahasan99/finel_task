@@ -13,7 +13,7 @@ app.use(fileUpload());
 
 
 
-app.use(express.static('public'));
+app.use(express.static('files'));
 
 mongoose.connect('mongodb://murtaza:ali12345@ds137540.mlab.com:37540/book_store', { useNewUrlParser: true });
 

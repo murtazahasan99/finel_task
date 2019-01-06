@@ -37,9 +37,9 @@ router.get('/', (req, res) => {
         _id: new mongoose.Types.ObjectId(),
         title:req.body.title,
         author:req.body.author,
-        imageUrl:'../files/'+imgName+'.png',
+        imageUrl:imgName+'.png',
         publish:req.body.publish,
-        PdfUrl: '../files/'+pdfName+'.pdf',
+        PdfUrl:pdfName+'.pdf',
       })
       book.save().then(result=>{
           res.send("the book has been uploded");
