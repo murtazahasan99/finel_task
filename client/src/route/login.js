@@ -30,7 +30,17 @@ class Login extends Component {
     this.postData(`http://localhost:5000/api/user/login`, data)
       .then(data => {
         //
-
+          console.log(data)
+          if(data ==="you have tried an incorect credentials" ){
+           
+            alert("you have tried an incorect credentials")
+          }
+          else if(data==="there is no such user"){
+            alert("there is no such user")
+          }
+          else{
+            this.props.history.push("/")
+          }
 
 
       }) // JSON-string from `response.json()` call
@@ -52,16 +62,7 @@ class Login extends Component {
       referrer: "no-referrer", // no-referrer, *client
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-      .then(response => {
-        if (response.status == 200) {
-          
-          this.props.history.push("/")
-        }
-        else {
-          alert("some thing is error")
-        }
-
-      }); // parses response to JSON
+      .then(response =>response.text()); // parses response to JSON
   }
   render() {
     return (

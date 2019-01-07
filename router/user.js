@@ -52,7 +52,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(req.body.password, result.password, function(err, response) {
           if(response){
             const token = jwt.sign({ "_id": result._id }, 'koko');
-            res.header({'x-auth-token': token}).send('Done');
+            res.header({'x-auth-token': token}).send(token);
           }else{
             res.status(400).send('you have tried an incorect credentials');
           }

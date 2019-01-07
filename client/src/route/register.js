@@ -50,7 +50,7 @@ class Register extends Component {
           referrer: "no-referrer", // no-referrer, *client
           body: JSON.stringify(data), // body data type must match "Content-Type" header
       })
-      .then(response => response); // parses response to JSON
+      .then(response => response.text()); // parses response to JSON
   }
   
 
@@ -62,11 +62,17 @@ class Register extends Component {
       name: this.state.name,
       age: Number(this.state.age)
     }
-    console.log(data);
+
     this.postData(`http://localhost:5000/api/user/register`, data)
     .then(data => {
       //
-      this.props.history.push("/")
+      if(data ==="New user has been added" ){
+           
+        this.props.history.push("/")
+      }
+      else{
+        alert("some thing error")
+      }
 
 
     }) // JSON-string from `response.json()` call
